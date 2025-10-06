@@ -3,97 +3,136 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ramez invites you ✨</title>
+  <title>Date Invite ✨</title>
   <style>
-    :root { --bg:#fffaf7; --card:#ffffff; --accent:#5b7cfa; --text:#222; --muted:#777; --ok:#28a745; }
-    body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background: linear-gradient(160deg,#fffaf7,#f7f9ff); color:var(--text); }
-    .wrap { max-width: 680px; margin: 0 auto; padding: 28px; }
-    .card { background:var(--card); border-radius: 18px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); padding: 26px; }
-    h1 { margin: 0 0 10px; font-size: 28px; }
-    p { margin: 0 0 16px; color: var(--muted); }
-    .grid { display: grid; gap: 14px; grid-template-columns: 1fr 1fr; }
-    label { font-weight: 600; font-size: 14px; }
-    input, select { width: 100%; padding: 10px 12px; border: 1px solid #e6e6e6; border-radius: 10px; font-size: 15px; }
-    .plans { display: flex; gap: 10px; flex-wrap: wrap; }
-    .pill { border: 1px solid #e6e6e6; border-radius: 999px; padding: 8px 12px; cursor: pointer; }
-    .pill[data-selected="true"] { border-color: var(--accent); background: #eef2ff; }
-    .cta { margin-top: 18px; display:flex; gap:10px; flex-wrap:wrap; }
-    button { padding: 12px 16px; border: 0; border-radius: 12px; font-weight: 700; cursor: pointer; }
-    .primary { background: var(--accent); color: white; }
-    .ghost { background: #f3f3f3; }
-    .foot { margin-top: 14px; font-size: 12px; color: var(--muted); }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .card {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+      padding: 30px;
+      max-width: 500px;
+      width: 90%;
+      text-align: center;
+      animation: fadeIn 1s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    h1 {
+      margin-bottom: 10px;
+      font-size: 28px;
+      color: #333;
+    }
+    p {
+      margin-bottom: 20px;
+      color: #555;
+    }
+    .plans {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+    .pill {
+      padding: 12px 18px;
+      border-radius: 30px;
+      border: 2px solid #eee;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      background: #fafafa;
+    }
+    .pill:hover {
+      transform: scale(1.05);
+      border-color: #ff7b54;
+      background: #fff3ef;
+    }
+    .pill[data-selected="true"] {
+      background: linear-gradient(135deg, #ff7b54, #ffb199);
+      color: white;
+      border-color: transparent;
+    }
+    .cta {
+      margin-top: 25px;
+    }
+    button {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    button:hover {
+      transform: scale(1.05);
+    }
+    .primary {
+      background: linear-gradient(135deg, #36d1dc, #5b86e5);
+      color: white;
+    }
+    .ghost {
+      background: #f1f1f1;
+      color: #333;
+    }
+    .foot {
+      margin-top: 15px;
+      font-size: 13px;
+      color: #777;
+    }
     .heart { color: #ff4d6d; }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="card">
-      <h1>Hi! A tiny question…</h1>
-      <p>Hi hi this is testing the github pages ✨</p>
+  <div class="card">
+    <h1>Hey! ✨</h1>
+    <p>I’d love to take you out. Pick what sounds fun and when you’re free!</p>
 
-      <div class="plans" id="plans">
-        <div class="pill" data-value="Dinner at a cozy spot">Dinner 🍝</div>
-        <div class="pill" data-value="Sunset walk and coffee">Walk + coffee ☕</div>
-        <div class="pill" data-value="Cute surprise I think you'll love">Surprise 🎁</div>
-        <div class="pill" data-value="Movie night with snacks">Movie night 🎬</div>
-      </div>
-
-      <div class="grid" style="margin-top: 14px;">
-        <div>
-          <label for="date">Date</label>
-          <input type="date" id="date" />
-        </div>
-        <div>
-          <label for="time">Time</label>
-          <input type="time" id="time" />
-        </div>
-      </div>
-
-      <div class="grid" style="margin-top: 14px;">
-        <div>
-          <label for="alt">If that doesn’t work, an alternative</label>
-          <input type="text" id="alt" placeholder="e.g., Thursday evening or Saturday afternoon" />
-        </div>
-        <div>
-          <label for="notes">Anything you’d like to add</label>
-          <input type="text" id="notes" placeholder="Preferences, allergies, vibe…" />
-        </div>
-      </div>
-
-      <div class="cta">
-        <button class="primary" id="whatsappBtn">Send on WhatsApp</button>
-        <button class="ghost" id="smsBtn">Send via SMS</button>
-      </div>
-      <div class="foot">Made with a little code and a lot of <span class="heart">♥</span></div>
+    <div class="plans" id="plans">
+      <div class="pill" data-value="Dinner at a cozy spot">Dinner 🍝</div>
+      <div class="pill" data-value="Sunset walk and coffee">Walk + coffee ☕</div>
+      <div class="pill" data-value="Cute surprise I think you'll love" id="surprise">Surprise 🎁</div>
+      <div class="pill" data-value="Movie night with snacks">Movie night 🎬</div>
     </div>
+
+    <div class="cta">
+      <button class="primary" id="whatsappBtn">Send on WhatsApp</button>
+      <button class="ghost" id="smsBtn">Send via SMS</button>
+    </div>
+
+    <div class="foot">Made with code + <span class="heart">♥</span></div>
   </div>
 
   <script>
-    // Set your phone here (international format without +). Example: Jordan 9627XXXXXXXX
-    const YOUR_PHONE_INTL = "9627XXXXXXXX";
+    const YOUR_PHONE_INTL = "9627XXXXXXXX"; // replace with your number
 
     const pills = document.querySelectorAll(".pill");
+    let selectedPlan = null;
+
     pills.forEach(p => p.addEventListener("click", () => {
+      // Special case for Surprise
+      if (p.id === "surprise") {
+        const confirmSurprise = confirm("⚠️ Warning: Surprise may involve something extremely boring... or extreme sports! Are you sure?");
+        if (!confirmSurprise) return;
+      }
       pills.forEach(x => x.dataset.selected = "false");
       p.dataset.selected = "true";
+      selectedPlan = p.dataset.value;
     }));
 
     function buildMessage() {
-      const planEl = Array.from(pills).find(p => p.dataset.selected === "true");
-      const plan = planEl ? planEl.dataset.value : "A nice plan together";
-      const date = document.getElementById("date").value;
-      const time = document.getElementById("time").value;
-      const alt = document.getElementById("alt").value.trim();
-      const notes = document.getElementById("notes").value.trim();
-
-      const dateTime = (date || time) ? `${date || "a day that works"} at ${time || "a good time"}` : "a time that’s good for you";
-
-      let msg = `Hey! I’d love to take you out — thinking: ${plan}.\n\nAre you free on ${dateTime}?`;
-      if (alt) msg += `\n\nIf not, ${alt} works too.`;
-      if (notes) msg += `\n\nNotes: ${notes}`;
-      msg += `\n\nIf you’re up for it, I’ll book everything. 💫`;
-
-      return msg;
+      const plan = selectedPlan || "a fun plan together";
+      return `Hey! I’d love to take you out — thinking: ${plan}. When are you free? 💫`;
     }
 
     function openWhatsApp() {
@@ -104,7 +143,6 @@
 
     function openSMS() {
       const text = encodeURIComponent(buildMessage());
-      // sms: works on mobile; may vary by platform
       const url = `sms:${YOUR_PHONE_INTL}?&body=${text}`;
       window.location.href = url;
     }
